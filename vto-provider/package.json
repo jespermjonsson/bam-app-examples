@@ -1,0 +1,17 @@
+{
+  "name": "bambuser-app-framework-vto-provider-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@bambuser/vite-plugin-bam-app-dev-env": "^1.0.0",
+    "@bambuser/vite-plugin-bam-app-runtime": "^1.0.0",
+    "@bambuser/vite-plugin-bam-ui": "^1.0.0",
+    "vite": "^5.1.6"
+  }
+}

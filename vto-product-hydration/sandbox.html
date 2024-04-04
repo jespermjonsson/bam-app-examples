@@ -1,0 +1,119 @@
+
+<script>
+  window.onBambuserOneToOneReady = function() {
+    window.oneToOneEmbed = new BambuserOneToOneEmbed({});
+    window.oneToOneEmbed.on('provide-product-data', (event) => {
+      event.products.forEach(({
+        id: bambuserId,
+        ref,
+      }) => {
+        if (ref === '1' || ref === '2') {
+          window.oneToOneEmbed.updateProduct(bambuserId, (productFactory) => {
+            return productFactory
+              .currency('USD')
+              .locale('en-US')
+              .product((detailFactory) =>
+                detailFactory
+                  .name('Product X')
+                  .defaultVariationIndex(0)
+                  .attributes((attribute) => [
+                    attribute('colorId')
+                      .type('color')
+                      .name('Color')
+                      .options((option) => [
+                        option('color1').name('Color 1').meta({
+                          hexValue: '#ff0000',
+                        }),
+                        option('color2').name('Color 2').meta({
+                          hexValue: '#ffff00',
+                        }),
+                      ]),
+                  ])
+                  .virtualTryOn(vtoFactory =>
+                    vtoFactory
+                      .vendorId('example')
+                      .category('Category 123')
+                      .meta({
+                        productVtoMeta: '123',
+                      })
+                      .attributes((vtoAttrDef) => [
+                        vtoAttrDef('pattern')
+                          .type('pattern')
+                          .name('Pattern')
+                          .defaultOptionIndex(0)
+                          .options((option) => [
+                            option('pattern-1').name('Pattern 1').meta({
+                              imageUrl: 'https://example.com/lipstic-pattern-1-matte-preview.jpg',
+                            }),
+                            option('pattern-2').name('Pattern 2').meta({
+                              imageUrl: 'https://example.com/lipstic-pattern-2-matte-preview.jpg',
+                            }),
+                          ]),
+                        vtoAttrDef('finish')
+                          .type('finish')
+                          .name('Finish/Style')
+                          .options((option) => [
+                            option('matte').name('Matte 1'),
+                            option('metallic').name('Metallic'),
+                          ]),
+                      ]),
+                  )
+                  .description('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a volutpat odio, in tristique justo. Curabitur eu est leo. Ut a arcu euismod odio aliquet rhoncus.')
+                  .variations((variationFactory) => [
+                    variationFactory()
+                      .name('Product X V1')
+                      .sku('1')
+                      .inStock(true)
+                      .price((priceFactory) =>
+                        priceFactory
+                          .original(150)
+                          .current(100),
+                      )
+                      .attributes((attribute) => [
+                        attribute('colorId', 'color1'),
+                      ])
+                      .virtualTryOn(vtoFactory =>
+                        vtoFactory
+                          .supported(true)
+                          .attributes(vtoAttr => [
+                            vtoAttr('finish', 'matte'),
+                          ])
+                          .meta({
+                            variationVtoMeta: '111AAA',
+                          }),
+                      ),
+                    variationFactory()
+                      .name('Product X V2')
+                      .sku('2')
+                      .inStock(true)
+                      .price((priceFactory) =>
+                        priceFactory
+                          .original(150)
+                          .current(100),
+                      )
+                      .attributes((attribute) => [
+                        attribute('colorId', 'color2'),
+                      ])
+                      .virtualTryOn(vtoFactory =>
+                        vtoFactory
+                          .supported(true)
+                          .attributes(vtoAttr => [
+                            vtoAttr('finish', 'metallic'),
+                          ])
+                          .meta({
+                            variationVtoMeta: '222BBB',
+                          }),
+                      ),
+                  ]),
+              );
+          });
+        } else {
+          window.oneToOneEmbed.updateProduct(bambuserId, () => {
+            throw new Error('No such product');
+          });
+        }
+      });
+    });
+  };
+</script>
+<script src="https://one-to-one.bambuser.com/embed.js"></script>

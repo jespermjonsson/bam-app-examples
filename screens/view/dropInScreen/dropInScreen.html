@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" class="bam-ui">
+  <head>
+    <meta name="bam-ui-insertion-point" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drop-in screen</title>
+  </head>
+  <body>
+    <div class="bam-container" data-spacing="none">
+      <div class="bam-header">
+        <div class="bam-container" data-spacing="x-small">
+          <div class="bam-headline1">Welcome</div>
+          <div class="bam-title">A Bambuser App Framework screen placed in "drop-in" slot</div>
+        </div>
+      </div>
+      <div class="bam-container" data-padding="normal">
+        <div class="bam-container" data-spacing="small" data-layout="row-top">
+          <input type="checkbox" class="bam-checkbox" name="accept-terms" />
+          <span>I agree to the <a data-variant="legal" href="https://bambuser.com/terms-of-service" target="_blank">Terms of Service</a> and the <a data-variant="legal" href="https://bambuser.com/privacy-policy" target="_blank">Privacy Policy</a></span>
+        </div>
+        <div class="bam-container" data-variant="card">
+          <div class="bam-container" data-spacing="x-small">
+            <div class="bam-container" data-layout="row" data-spacing="small">
+              <i data-variant="camera"></i>
+              <p class="bam-body-bold">Start directly</p>
+            </div>
+            <p class="bam-body">Connect with one of our amazing agents</p>
+          </div>
+          <button id="enterQueue" data-variant="primary" data-size="large-wide" disabled>Enter queue</button>
+        </div>
+        <div class="bam-container" data-variant="card">
+          <div class="bam-container" data-spacing="x-small">
+            <div class="bam-container" data-layout="row" data-spacing="small">
+              <i data-variant="calendar"></i>
+              <p class="bam-body-bold">Another time</p>
+            </div>
+            <p class="bam-body">Schedule an appointment to connect at another time</p>
+          </div>
+          <button id="makeAppointment" data-size="large-wide" disabled>Make appointment</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./dropInScreen.js"></script>
+  </body>
+</html>

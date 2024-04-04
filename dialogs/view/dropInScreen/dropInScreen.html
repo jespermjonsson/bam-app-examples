@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" class="bam-ui">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom screen</title>
+  </head>
+  <body>
+    <div class="bam-container" data-spacing="none">
+      <div class="bam-header">
+        <div class="bam-container" data-spacing="x-small">
+          <div class="bam-headline1">Welcome</div>
+          <div class="bam-title">Bambuser App Framework dialogs</div>
+        </div>
+      </div>
+      <div class="bam-container" data-padding="normal">
+        <button id="openCustomDialog">Open custom dialog</button>
+        <button id="openMessageDialog">Open message dialog</button>
+        <button id="openConfirmDialog">Open confirm dialog</button>
+        <p id="dialog-result" style="white-space: pre-wrap;">Dialog result: No dialog opened yet</p>
+      </div>
+    </div>
+    <script type="module" src="./dropInScreen.js"></script>
+  </body>
+</html>

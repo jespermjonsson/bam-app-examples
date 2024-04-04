@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" class="bam-ui">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Dialog</title>
+  </head>
+  <body class="bam-container" data-padding="large">
+    <div id="step-1" class="bam-container" data-spacing="large">
+      <div class="bam-container">
+        <h4>Offer</h4>
+        <p>By filling in your name and pressing "accept" you will receive an awsome offer</p>
+      </div>
+      <div class="bam-container" data-spacing="x-small">
+        <p class="bam-title">Your name</p>
+        <input placeholder="Name" name="shopper-name"></input>
+      </div>
+      <button id="accept" data-variant="primary" data-size="large-wide">Accept</button>
+    </div>
+    <div id="step-2" class="bam-container" data-spacing="large" style="display: none;">
+      <h3>Your coupon code</h3>
+      <p class="bam-body-bold" id="coupon"></p>
+      <p class="bam-body-small">Closing in <span id="count-down">4</span>...</p>
+    </div>
+    <script type="module" src="./customDialog.js"></script>
+  </body>
+</html>
