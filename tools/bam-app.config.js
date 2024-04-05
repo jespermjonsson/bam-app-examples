@@ -1,6 +1,7 @@
 export default {
   "appManifest": {
     "permissions": [
+      "showsPlayer:tool.write",
       "callsWidget:tool.write",
       "callsAgentTool:tool.write"
     ],
