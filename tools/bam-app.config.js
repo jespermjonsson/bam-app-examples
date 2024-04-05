@@ -1,9 +1,8 @@
 export default {
   "appManifest": {
     "permissions": [
-      "callsWidget:host.run",
+      "showsPlayer:tool.write",
       "callsWidget:tool.write",
-      "callsAgentTool:host.run",
       "callsAgentTool:tool.write"
     ],
     "src": {
