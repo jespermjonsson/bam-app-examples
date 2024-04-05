@@ -28,3 +28,13 @@ tool.on('message', payload => {
     },
   });
 });
+
+if (import.meta.hot) {
+  import.meta.hot.on('vite:beforeFullReload', (e) => {
+    // Detect when hot reloading needs to reload whole app context.
+    // Then reload whole dev env instead as reloading of app context is not supported yet.
+    window.top.postMessage({
+      eventType: 'bambuserAppDev:reload',
+    }, '*');
+  });
+}
