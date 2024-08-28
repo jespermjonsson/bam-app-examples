@@ -31,32 +31,7 @@
                   ])
                   .virtualTryOn(vtoFactory =>
                     vtoFactory
-                      .vendorId('example')
-                      .category('Category 123')
-                      .meta({
-                        productVtoMeta: '123',
-                      })
-                      .attributes((vtoAttrDef) => [
-                        vtoAttrDef('pattern')
-                          .type('pattern')
-                          .name('Pattern')
-                          .defaultOptionIndex(0)
-                          .options((option) => [
-                            option('pattern-1').name('Pattern 1').meta({
-                              imageUrl: 'https://example.com/lipstic-pattern-1-matte-preview.jpg',
-                            }),
-                            option('pattern-2').name('Pattern 2').meta({
-                              imageUrl: 'https://example.com/lipstic-pattern-2-matte-preview.jpg',
-                            }),
-                          ]),
-                        vtoAttrDef('finish')
-                          .type('finish')
-                          .name('Finish/Style')
-                          .options((option) => [
-                            option('matte').name('Matte 1'),
-                            option('metallic').name('Metallic'),
-                          ]),
-                      ]),
+                      .vendorId('example'),
                   )
                   .description('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a volutpat odio, in tristique justo. Curabitur eu est leo. Ut a arcu euismod odio aliquet rhoncus.')
                   .variations((variationFactory) => [
@@ -74,13 +49,7 @@
                       ])
                       .virtualTryOn(vtoFactory =>
                         vtoFactory
-                          .supported(true)
-                          .attributes(vtoAttr => [
-                            vtoAttr('finish', 'matte'),
-                          ])
-                          .meta({
-                            variationVtoMeta: '111AAA',
-                          }),
+                          .supported(false),
                       ),
                     variationFactory()
                       .name('Product X V2')
@@ -96,13 +65,32 @@
                       ])
                       .virtualTryOn(vtoFactory =>
                         vtoFactory
-                          .supported(true)
-                          .attributes(vtoAttr => [
-                            vtoAttr('finish', 'metallic'),
-                          ])
-                          .meta({
-                            variationVtoMeta: '222BBB',
-                          }),
+                          .supported(false),
+                      ),
+                  ]),
+              );
+          });
+        } else if (ref === '3') {
+
+          // This product doesn't use .virtualTryOn chainable APIs to disable VTO
+          // The VTO provider's app will be asked about the data and if it should be enabled or not instead
+          window.oneToOneEmbed.updateProduct(bambuserId, (productFactory) => {
+            return productFactory
+              .currency('USD')
+              .locale('en-US')
+              .product((detailFactory) =>
+                detailFactory
+                  .name('Product Y')
+                  .defaultVariationIndex(0)
+                  .description('This is product 3')
+                  .variations((variationFactory) => [
+                    variationFactory()
+                      .name('Product Y V1')
+                      .sku('3')
+                      .inStock(true)
+                      .price((priceFactory) =>
+                        priceFactory
+                          .current(499),
                       ),
                   ]),
               );

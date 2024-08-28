@@ -37,3 +37,27 @@ provider.on('resume', () => {
 provider.on('dispose', () => {
   console.info('VTO APP: dispose');
 });
+provider.on('provide-vto-data', async (event) => {
+  console.log('VTO APP: provide-vto-data', event);
+  if (event.product.variations.find((variation) => variation.sku === '3')) {
+    // Fetch data async from external source to determine if variation skus should be enabled or not for VTO together with all the necessary VTO data
+    return {
+      category: "lipstic",
+      patterns: [{
+        id: "matte",
+        label: "Matte",
+        imageURL: "https://example.com/lipstic-pattern-matte-preview.jpg",
+      }],
+      variations: [{
+        sku: "3",
+        color: {
+          label: "Red",
+          hexValue: "#ff0000",
+        },
+        finish: "metalic",
+     }],
+    };
+  }
+
+  return false;
+});
